@@ -1,5 +1,6 @@
 const express = require("express");
 const { mongoConnect } = require("../config/database");
+const dataRouter = require("../routes/data.route");
 
 require("dotenv").config();
 const cors = require("cors");
@@ -16,6 +17,8 @@ app.use(
 app.get("/", (req, res) => {
   res.send({ msg: "Hello Blackcoffer... " });
 });
+
+app.use("/data", dataRouter);
 
 app.listen(PORT, async () => {
   try {
